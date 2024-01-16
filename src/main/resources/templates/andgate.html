@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AND Gate Tester</title>
+    <style>
+      #img {
+        border: 4px solid rgb(33, 72, 198);
+        width: 750px;
+        height: 300px;
+        display: inline-block;
+        aspect-ratio: auto 750 / 300;
+        position: absolute;
+        top: 90px;
+        left: 350px;
+      }
+
+      #inputs {
+        width: 120px;
+        height: 100px;
+        display: inline-block;
+        margin-bottom: 10px;
+        position: absolute;
+        top: 160px;
+        left: 200px;
+        padding-top: 10px;
+      }
+
+      #expected {
+        width: 120px;
+        display: inline-block;
+        position: absolute;
+        right: 300px;
+        top: 220px;
+      }
+
+      #expectedResult {
+        width: 100%;
+      }
+      #testAndGate {
+        display: inline-block;
+        position: absolute;
+        right: 300px;
+        top: 300px;
+      }
+
+      #result {
+        position: absolute;
+        top: 500px;
+        right: 550px;
+        color: blue;
+        font-size: 30px;
+      }
+      #input1 {
+        width: 95%;
+        margin-bottom: 50px;
+      }
+      #input2 {
+        width: 95%;
+      }
+      #title {
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <h1 id="title">AND Gate Simulator</h1>
+
+    <div id="inputs">
+      <label for="input1">Input 1:</label>
+      <input
+        type="number"
+        id="input1"
+        placeholder="Enter 0 or 1"
+        min="0"
+        max="1"
+      />
+      <br />
+      <label for="input2">Input 2:</label>
+      <input
+        type="number"
+        id="input2"
+        placeholder="Enter 0 or 1"
+        min="0"
+        max="1"
+      />
+    </div>
+    <div id="img">
+      <img src="/images/AndGate.png" alt="and gate image" />
+    </div>
+    <br />
+    <div id="expected">
+      <label for="expectedResult">expected output:</label>
+      <input
+        type="number"
+        id="expectedResult"
+        placeholder="Enter 0 or 1"
+        min="0"
+        max="1"
+      />
+    </div>
+    <br />
+    <div id="testAndGate">
+      <button onclick="testAndGate()">Test AND Gate</button>
+    </div>
+    <br />
+    <div id="result">
+      <p id="result"></p>
+    </div>
+
+    <script>
+      function testAndGate() {
+        // Get the input values
+        var input1 = parseInt(document.getElementById("input1").value);
+        var input2 = parseInt(document.getElementById("input2").value);
+        var expectedResult = parseInt(
+          document.getElementById("expectedResult").value
+        );
+
+        // Perform AND gate operation
+        var result = input1 && input2;
+
+        // Compare with the expected result
+        if (result === expectedResult) {
+          document.getElementById("result").innerText =
+            "Success! Result matched the expected output.";
+        } else {
+          document.getElementById("result").innerText =
+            "Failure! Result did not match the expected output.";
+        }
+      }
+    </script>
+  </body>
+</html>
